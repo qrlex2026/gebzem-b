@@ -1,4 +1,4 @@
-import { Home, Search, ShoppingBag, User } from 'lucide-react';
+import { Search, Compass, Tag, User } from 'lucide-react';
 
 interface BottomNavProps {
   activeTab: string;
@@ -7,14 +7,14 @@ interface BottomNavProps {
 
 export default function BottomNav({ activeTab, setActiveTab }: BottomNavProps) {
   const navItems = [
-    { id: 'home', icon: Home, label: 'Ana Sayfa' },
-    { id: 'explore', icon: Search, label: 'Keşfet' },
-    { id: 'orders', icon: ShoppingBag, label: 'Siparişler' },
+    { id: 'search', icon: Search, label: 'Arama' },
+    { id: 'explore', icon: Compass, label: 'Keşfet' },
+    { id: 'campaign', icon: Tag, label: 'Kampanya' },
     { id: 'profile', icon: User, label: 'Profil' },
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 px-6 pb-8 pt-4 bg-white/80 backdrop-blur-xl border-t border-zinc-100">
+    <div className="fixed bottom-[15px] left-4 right-4 z-50 px-6 py-3 bg-white/70 backdrop-blur-2xl border border-zinc-100 rounded-[15px] shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
       <div className="flex justify-between items-center w-full max-w-7xl mx-auto">
         {navItems.map((item) => {
           const Icon = item.icon;

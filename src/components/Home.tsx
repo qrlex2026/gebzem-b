@@ -1,4 +1,4 @@
-import { Search, Coffee, ShoppingBag, Wrench, Car, LayoutGrid, Navigation, Bell, X, Utensils, Calendar } from 'lucide-react';
+import { Search, Coffee, ShoppingBag, Wrench, Car, LayoutGrid, Navigation, Bell, X, Utensils, Calendar, FileText, Home as HomeIcon, Briefcase } from 'lucide-react';
 import { popularBusinesses } from '../data';
 import ListingCard from './ListingCard';
 import { Business } from '../types';
@@ -15,6 +15,9 @@ const categories = [
   { id: 'shopping', icon: ShoppingBag, label: 'Alışveriş' },
   { id: 'services', icon: Wrench, label: 'Hizmetler' },
   { id: 'taxi', icon: Car, label: 'Taksi' },
+  { id: 'ilan', icon: FileText, label: 'İlan' },
+  { id: 'emlak', icon: HomeIcon, label: 'Emlak' },
+  { id: 'is', icon: Briefcase, label: 'İş' },
 ];
 
 const allCategories = [
@@ -24,6 +27,9 @@ const allCategories = [
   { id: 'etkinlikler', icon: Calendar, label: 'Etkinlikler' },
   { id: 'alisveris', icon: ShoppingBag, label: 'Alışveriş' },
   { id: 'taksi', icon: Car, label: 'Taksi' },
+  { id: 'ilan', icon: FileText, label: 'İlan' },
+  { id: 'emlak', icon: HomeIcon, label: 'Emlak' },
+  { id: 'is', icon: Briefcase, label: 'İş İlanları' },
 ];
 
 export default function Home({ onSelectBusiness }: HomeProps) {
@@ -40,19 +46,19 @@ export default function Home({ onSelectBusiness }: HomeProps) {
       <div className="px-6 pt-12 pb-6 max-w-7xl mx-auto flex items-center justify-between">
         <button 
           onClick={() => setShowCategories(true)}
-          className="w-10 h-10 bg-white rounded-xl shadow-sm border border-zinc-100 flex items-center justify-center text-zinc-900 active:scale-95 transition-transform"
+          className="w-10 h-10 bg-white rounded-xl shadow-sm border border-zinc-100 flex items-center justify-center text-zinc-900 active:scale-95 transition-transform shrink-0"
         >
           <LayoutGrid size={20} />
         </button>
 
         <div className="flex items-center gap-2">
           <Navigation size={18} className="text-zinc-900" />
-          <h1 className="text-xl font-bold text-zinc-900 tracking-tight">
+          <h1 className="text-[20px] font-bold text-zinc-900 tracking-tight">
             Gebze, Kocaeli
           </h1>
         </div>
 
-        <button className="w-10 h-10 rounded-full border border-zinc-200 flex items-center justify-center text-zinc-900 active:scale-95 transition-transform">
+        <button className="w-10 h-10 rounded-full border border-zinc-200 flex items-center justify-center text-zinc-900 active:scale-95 transition-transform shrink-0">
           <Bell size={20} />
         </button>
       </div>
@@ -66,6 +72,18 @@ export default function Home({ onSelectBusiness }: HomeProps) {
             placeholder="Kafe, hizmet ara..." 
             className="flex-1 bg-transparent outline-none text-zinc-900 placeholder:text-zinc-400 font-medium"
           />
+        </div>
+      </div>
+
+      {/* Slider */}
+      <div className="px-6 mb-8 max-w-7xl mx-auto">
+        <div className="flex gap-4 overflow-x-auto hide-scrollbar snap-x snap-mandatory">
+          {[1, 2, 3].map((item) => (
+            <div key={item} className="min-w-[100%] md:min-w-[400px] h-[250px] bg-zinc-200 rounded-[24px] p-6 flex flex-col justify-end snap-center shrink-0">
+              <h1 className="text-2xl font-bold text-zinc-900 mb-1">Kampanya Başlığı {item}</h1>
+              <h3 className="text-sm font-medium text-zinc-600">Kampanya detayı ve açıklaması burada yer alacak. Fırsatı kaçırmayın.</h3>
+            </div>
+          ))}
         </div>
       </div>
 
