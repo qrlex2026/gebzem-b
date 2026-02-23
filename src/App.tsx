@@ -10,7 +10,7 @@ export default function App() {
   const [selectedBusiness, setSelectedBusiness] = useState<Business | null>(null);
 
   return (
-    <div className="max-w-md mx-auto bg-[#F9FAFB] min-h-screen relative shadow-2xl overflow-hidden">
+    <div className="w-full mx-auto bg-[#F9FAFB] min-h-screen relative shadow-2xl overflow-hidden">
       <AnimatePresence mode="wait">
         {selectedBusiness ? (
           <BusinessProfile 

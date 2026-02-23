@@ -20,7 +20,7 @@ export default function BusinessProfile({ business, onBack }: BusinessProfilePro
       className="bg-white min-h-screen pb-32"
     >
       {/* Hero Image & Header */}
-      <div className="relative h-80">
+      <div className="relative h-80 md:h-96 lg:h-[400px]">
         <img 
           src={business.imageUrl} 
           alt={business.name} 
@@ -30,7 +30,7 @@ export default function BusinessProfile({ business, onBack }: BusinessProfilePro
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
         
         {/* Top Bar */}
-        <div className="absolute top-0 left-0 right-0 p-6 pt-12 flex justify-between items-center">
+        <div className="absolute top-0 left-0 right-0 p-6 pt-12 flex justify-between items-center max-w-7xl mx-auto">
           <button 
             onClick={onBack}
             className="w-11 h-11 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white active:scale-95 transition-transform"
@@ -44,7 +44,7 @@ export default function BusinessProfile({ business, onBack }: BusinessProfilePro
       </div>
 
       {/* Content */}
-      <div className="px-6 pt-8 relative -mt-8 bg-white rounded-t-[32px]">
+      <div className="px-6 pt-8 relative -mt-8 bg-white rounded-t-[32px] max-w-7xl mx-auto">
         <div className="flex justify-between items-start mb-4">
           <div className="pr-4">
             <h1 className="text-2xl font-bold text-zinc-900 mb-2 tracking-tight leading-tight">{business.name}</h1>
