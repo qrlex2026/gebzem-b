@@ -1,4 +1,4 @@
-import { Search, Coffee, ShoppingBag, Wrench, Car, LayoutGrid, Navigation, Bell, X, Utensils, Calendar, FileText, Home as HomeIcon, Briefcase, Cross, CreditCard, ParkingCircle, Hospital, Gift } from 'lucide-react';
+import { Search, Coffee, ShoppingBag, Wrench, Car, LayoutGrid, Navigation, Bell, X, Utensils, Calendar, FileText, Home as HomeIcon, Briefcase, Cross, CreditCard, ParkingCircle, Hospital, Gift, Pizza, IceCream, Sandwich } from 'lucide-react';
 import { popularBusinesses } from '../data';
 import ListingCard from './ListingCard';
 import { Business } from '../types';
@@ -10,12 +10,20 @@ interface HomeProps {
   onSelectBusiness: (business: Business) => void;
 }
 
-const categories = [
+const defaultCategories = [
   { id: 'eczane', icon: Cross, label: 'Eczane' },
   { id: 'atm', icon: CreditCard, label: 'ATM' },
   { id: 'taksi', icon: Car, label: 'Taksi' },
   { id: 'otopark', icon: ParkingCircle, label: 'Otopark' },
   { id: 'hastane', icon: Hospital, label: 'Hastane' },
+];
+
+const yemeCategories = [
+  { id: 'doner', icon: Utensils, label: 'Döner' },
+  { id: 'kebap', icon: Utensils, label: 'Kebap' },
+  { id: 'pide', icon: Pizza, label: 'Pide' },
+  { id: 'tatli', icon: IceCream, label: 'Tatlı' },
+  { id: 'fastfood', icon: Sandwich, label: 'Fast Food' },
 ];
 
 const allCategories = [
@@ -32,6 +40,9 @@ const allCategories = [
 
 export default function Home({ onSelectBusiness }: HomeProps) {
   const [showCategories, setShowCategories] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const displayCategories = selectedCategory === 'yeme' ? yemeCategories : defaultCategories;
 
   return (
     <motion.div 
@@ -49,7 +60,7 @@ export default function Home({ onSelectBusiness }: HomeProps) {
           <LayoutGrid size={20} />
         </button>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 cursor-pointer" onClick={() => setSelectedCategory(null)}>
           <Navigation size={18} className="text-zinc-900" />
           <h1 className="text-[20px] font-bold text-zinc-900 tracking-tight">
             Gebze, Kocaeli
@@ -88,7 +99,7 @@ export default function Home({ onSelectBusiness }: HomeProps) {
       {/* Categories */}
       <div className="px-6 mb-10 max-w-7xl mx-auto">
         <div className="flex justify-between items-center gap-4 overflow-x-auto pb-4 hide-scrollbar">
-          {categories.map((cat) => {
+          {displayCategories.map((cat) => {
             const Icon = cat.icon;
             return (
               <div key={cat.id} className="flex flex-col items-center gap-3 min-w-[72px] cursor-pointer group">
@@ -104,24 +115,18 @@ export default function Home({ onSelectBusiness }: HomeProps) {
 
       {/* İndirimler & Yeni İşletmeler */}
       <div className="px-6 mb-10 max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 gap-4">
-          <div className="bg-white rounded-[24px] p-5 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col gap-3 cursor-pointer active:scale-95 transition-transform">
-            <div className="w-10 h-10 bg-red-50 text-red-500 rounded-full flex items-center justify-center">
-              <Gift size={20} />
+        <div className="flex gap-4 overflow-x-auto pb-4 hide-scrollbar">
+          <div className="flex flex-col items-center gap-3 min-w-[72px] cursor-pointer group">
+            <div className="w-16 h-16 bg-white rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex items-center justify-center text-red-500 group-active:scale-95 transition-transform">
+              <Gift size={24} strokeWidth={2} />
             </div>
-            <div>
-              <h3 className="font-bold text-zinc-900 text-sm">İndirimler</h3>
-              <p className="text-xs font-medium text-zinc-500">Özel fırsatlar</p>
-            </div>
+            <span className="text-xs font-bold text-zinc-600">İndirimler</span>
           </div>
-          <div className="bg-white rounded-[24px] p-5 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col gap-3 cursor-pointer active:scale-95 transition-transform">
-            <div className="w-10 h-10 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center">
-              <Briefcase size={20} />
+          <div className="flex flex-col items-center gap-3 min-w-[72px] cursor-pointer group">
+            <div className="w-16 h-16 bg-white rounded-[20px] shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex items-center justify-center text-emerald-500 group-active:scale-95 transition-transform">
+              <Briefcase size={24} strokeWidth={2} />
             </div>
-            <div>
-              <h3 className="font-bold text-zinc-900 text-sm">Yeni İşletmeler</h3>
-              <p className="text-xs font-medium text-zinc-500">Yeni açılanlar</p>
-            </div>
+            <span className="text-xs font-bold text-zinc-600">Yeni İşletmeler</span>
           </div>
         </div>
       </div>
@@ -166,7 +171,14 @@ export default function Home({ onSelectBusiness }: HomeProps) {
               {allCategories.map((cat) => {
                 const Icon = cat.icon;
                 return (
-                  <div key={cat.id} className="flex flex-col items-center gap-3 cursor-pointer group">
+                  <div 
+                    key={cat.id} 
+                    onClick={() => {
+                      setSelectedCategory(cat.id);
+                      setShowCategories(false);
+                    }}
+                    className="flex flex-col items-center gap-3 cursor-pointer group"
+                  >
                     <div className="w-20 h-20 bg-zinc-50 rounded-[24px] flex items-center justify-center text-zinc-900 group-active:scale-95 transition-transform">
                       <Icon size={28} strokeWidth={1.5} />
                     </div>

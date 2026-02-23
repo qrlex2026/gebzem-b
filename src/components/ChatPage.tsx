@@ -20,9 +20,9 @@ export default function ChatPage() {
           </div>
         </div>
         
-        <div className="mt-4 flex items-center gap-3 bg-zinc-50 px-4 py-3 rounded-full border border-zinc-100">
-          <button className="w-8 h-8 bg-zinc-200 rounded-full flex items-center justify-center text-zinc-600 active:scale-95 transition-transform shrink-0">
-            <Mic size={16} />
+        <div className="mt-4 flex items-center gap-3 bg-transparent px-4 py-3 rounded-full border border-zinc-200">
+          <button className="w-8 h-8 rounded-full flex items-center justify-center text-zinc-600 active:scale-95 transition-transform shrink-0">
+            <Mic size={20} />
           </button>
           <input 
             type="text" 
