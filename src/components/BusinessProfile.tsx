@@ -1,4 +1,4 @@
-import { ArrowLeft, Heart, Star, Phone, MapPin, Share, Clock } from 'lucide-react';
+import { ArrowLeft, Heart, Star, Phone, Navigation, Share, Clock } from 'lucide-react';
 import { Business } from '../types';
 import { motion } from 'motion/react';
 import React, { useState } from 'react';
@@ -10,7 +10,7 @@ interface BusinessProfileProps {
 }
 
 export default function BusinessProfile({ business, onBack }: BusinessProfileProps) {
-  const [activeTab, setActiveTab] = useState('info');
+  const [activeTab, setActiveTab] = useState('bilgi');
 
   return (
     <motion.div 
@@ -21,12 +21,7 @@ export default function BusinessProfile({ business, onBack }: BusinessProfilePro
     >
       {/* Hero Image & Header */}
       <div className="relative h-80 md:h-96 lg:h-[400px]">
-        <img 
-          src={business.imageUrl} 
-          alt={business.name} 
-          className="w-full h-full object-cover"
-          referrerPolicy="no-referrer"
-        />
+        <div className="w-full h-full bg-zinc-300" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
         
         {/* Top Bar */}
@@ -55,17 +50,17 @@ export default function BusinessProfile({ business, onBack }: BusinessProfilePro
               <Star size={14} className="fill-zinc-900 text-zinc-900" />
               <span className="font-bold text-sm">{business.rating}</span>
             </div>
-            <span className="text-xs font-bold text-zinc-400">({business.reviews} reviews)</span>
+            <span className="text-xs font-bold text-zinc-400">({business.reviews} değerlendirme)</span>
           </div>
         </div>
 
         <div className="flex items-center gap-4 mb-8">
           <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold tracking-wide ${business.isOpen ? 'bg-emerald-50 text-emerald-600' : 'bg-red-50 text-red-600'}`}>
             <Clock size={14} />
-            {business.isOpen ? 'OPEN NOW' : 'CLOSED'}
+            {business.isOpen ? 'AÇIK' : 'KAPALI'}
           </div>
           <div className="flex items-center gap-1.5 text-zinc-500 text-sm font-semibold">
-            <MapPin size={16} />
+            <Navigation size={16} />
             {business.distance}
           </div>
         </div>
@@ -74,11 +69,11 @@ export default function BusinessProfile({ business, onBack }: BusinessProfilePro
         <div className="flex gap-3 mb-10">
           <button className="flex-1 bg-zinc-900 text-white py-4 rounded-[20px] font-bold text-sm flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(0,0,0,0.15)] active:scale-[0.98] transition-transform">
             <Phone size={18} />
-            Call
+            Ara
           </button>
           <button className="flex-1 bg-zinc-100 text-zinc-900 py-4 rounded-[20px] font-bold text-sm flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
-            <MapPin size={18} />
-            Directions
+            <Navigation size={18} />
+            Yol Tarifi
           </button>
           <button className="w-14 bg-zinc-100 text-zinc-900 py-4 rounded-[20px] flex items-center justify-center active:scale-[0.98] transition-transform">
             <Share size={18} />
@@ -87,7 +82,7 @@ export default function BusinessProfile({ business, onBack }: BusinessProfilePro
 
         {/* Tabs */}
         <div className="flex gap-8 border-b border-zinc-100 mb-8">
-          {['info', 'menu', 'reviews'].map((tab) => (
+          {['bilgi', 'menü', 'yorumlar'].map((tab) => (
             <button 
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -106,28 +101,28 @@ export default function BusinessProfile({ business, onBack }: BusinessProfilePro
 
         {/* Tab Content */}
         <div className="min-h-[200px]">
-          {activeTab === 'info' && (
+          {activeTab === 'bilgi' && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-              <h3 className="font-bold text-zinc-900 mb-3 text-lg">About</h3>
+              <h3 className="font-bold text-zinc-900 mb-3 text-lg">Hakkında</h3>
               <p className="text-zinc-500 leading-relaxed text-sm font-medium">
                 {business.description}
               </p>
             </motion.div>
           )}
-          {activeTab === 'menu' && (
+          {activeTab === 'menü' && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center justify-center h-40 text-zinc-400">
               <div className="w-12 h-12 bg-zinc-50 rounded-full flex items-center justify-center mb-3">
                 <Star size={20} className="text-zinc-300" />
               </div>
-              <span className="text-sm font-semibold">Menu items coming soon</span>
+              <span className="text-sm font-semibold">Menü yakında eklenecek</span>
             </motion.div>
           )}
-          {activeTab === 'reviews' && (
+          {activeTab === 'yorumlar' && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center justify-center h-40 text-zinc-400">
               <div className="w-12 h-12 bg-zinc-50 rounded-full flex items-center justify-center mb-3">
                 <Heart size={20} className="text-zinc-300" />
               </div>
-              <span className="text-sm font-semibold">Reviews coming soon</span>
+              <span className="text-sm font-semibold">Değerlendirmeler yakında eklenecek</span>
             </motion.div>
           )}
         </div>

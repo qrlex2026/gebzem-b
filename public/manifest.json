@@ -1,0 +1,20 @@
+{
+  "name": "Gebze Süper Uygulama",
+  "short_name": "Gebze",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F9FAFB",
+  "theme_color": "#F9FAFB",
+  "icons": [
+    {
+      "src": "https://picsum.photos/192",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://picsum.photos/512",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

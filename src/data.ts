@@ -4,45 +4,45 @@ export const popularBusinesses: Business[] = [
   {
     id: '1',
     name: 'Eskihisar Kahvecisi',
-    category: 'Cafe & Bakery',
+    category: 'Kafe & Fırın',
     distance: '1.2 km',
     rating: 4.8,
     reviews: 342,
     isOpen: true,
-    imageUrl: 'https://picsum.photos/seed/cafe1/800/600',
-    description: 'A cozy cafe by the sea offering the best Turkish coffee and fresh pastries in Gebze.'
+    imageUrl: '',
+    description: 'Deniz kenarında, Gebze\'nin en iyi Türk kahvesi ve taze hamur işlerini sunan rahat bir kafe.'
   },
   {
     id: '2',
-    name: 'Gebze Center Mall',
-    category: 'Shopping',
+    name: 'Gebze Center AVM',
+    category: 'Alışveriş',
     distance: '2.5 km',
     rating: 4.5,
     reviews: 1205,
     isOpen: true,
-    imageUrl: 'https://picsum.photos/seed/mall1/800/600',
-    description: 'The premier shopping destination in Gebze with over 100 stores, cinema, and dining options.'
+    imageUrl: '',
+    description: '100\'den fazla mağaza, sinema ve yemek seçenekleriyle Gebze\'nin önde gelen alışveriş merkezi.'
   },
   {
     id: '3',
-    name: 'Osman Hamdi Bey Museum',
-    category: 'Culture & Arts',
+    name: 'Osman Hamdi Bey Müzesi',
+    category: 'Kültür & Sanat',
     distance: '1.8 km',
     rating: 4.9,
     reviews: 512,
     isOpen: false,
-    imageUrl: 'https://picsum.photos/seed/museum1/800/600',
-    description: 'Historical museum showcasing the life and works of the famous Ottoman painter and archaeologist.'
+    imageUrl: '',
+    description: 'Ünlü Osmanlı ressamı ve arkeoloğunun hayatını ve eserlerini sergileyen tarihi müze.'
   },
   {
     id: '4',
     name: 'Tarihi Çoban Mustafa Paşa Külliyesi',
-    category: 'Historical Site',
+    category: 'Tarihi Mekan',
     distance: '0.5 km',
     rating: 4.7,
     reviews: 890,
     isOpen: true,
-    imageUrl: 'https://picsum.photos/seed/mosque1/800/600',
-    description: 'A beautiful 16th-century complex built by Mimar Sinan, featuring a mosque, mausoleum, and madrasa.'
+    imageUrl: '',
+    description: 'Mimar Sinan tarafından inşa edilen, cami, türbe ve medrese içeren güzel bir 16. yüzyıl külliyesi.'
   }
 ];

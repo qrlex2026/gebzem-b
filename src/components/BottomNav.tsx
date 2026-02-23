@@ -7,10 +7,10 @@ interface BottomNavProps {
 
 export default function BottomNav({ activeTab, setActiveTab }: BottomNavProps) {
   const navItems = [
-    { id: 'home', icon: Home, label: 'Home' },
-    { id: 'explore', icon: Search, label: 'Explore' },
-    { id: 'orders', icon: ShoppingBag, label: 'Orders' },
-    { id: 'profile', icon: User, label: 'Profile' },
+    { id: 'home', icon: Home, label: 'Ana Sayfa' },
+    { id: 'explore', icon: Search, label: 'Keşfet' },
+    { id: 'orders', icon: ShoppingBag, label: 'Siparişler' },
+    { id: 'profile', icon: User, label: 'Profil' },
   ];
 
   return (

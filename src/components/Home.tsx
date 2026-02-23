@@ -1,9 +1,9 @@
-import { Search, Coffee, ShoppingBag, Wrench, Car } from 'lucide-react';
+import { Search, Coffee, ShoppingBag, Wrench, Car, LayoutGrid, Navigation, Bell, X, Utensils, Calendar } from 'lucide-react';
 import { popularBusinesses } from '../data';
 import ListingCard from './ListingCard';
 import { Business } from '../types';
-import { motion } from 'motion/react';
-import React from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import React, { useState } from 'react';
 
 interface HomeProps {
   key?: React.Key;
@@ -11,13 +11,24 @@ interface HomeProps {
 }
 
 const categories = [
-  { id: 'food', icon: Coffee, label: 'Food' },
-  { id: 'shopping', icon: ShoppingBag, label: 'Shopping' },
-  { id: 'services', icon: Wrench, label: 'Services' },
-  { id: 'taxi', icon: Car, label: 'Taxi' },
+  { id: 'food', icon: Coffee, label: 'Yeme' },
+  { id: 'shopping', icon: ShoppingBag, label: 'Alışveriş' },
+  { id: 'services', icon: Wrench, label: 'Hizmetler' },
+  { id: 'taxi', icon: Car, label: 'Taksi' },
+];
+
+const allCategories = [
+  { id: 'yeme', icon: Utensils, label: 'Yeme' },
+  { id: 'restoran', icon: Coffee, label: 'Restoran' },
+  { id: 'hizmetler', icon: Wrench, label: 'Hizmetler' },
+  { id: 'etkinlikler', icon: Calendar, label: 'Etkinlikler' },
+  { id: 'alisveris', icon: ShoppingBag, label: 'Alışveriş' },
+  { id: 'taksi', icon: Car, label: 'Taksi' },
 ];
 
 export default function Home({ onSelectBusiness }: HomeProps) {
+  const [showCategories, setShowCategories] = useState(false);
+
   return (
     <motion.div 
       initial={{ opacity: 0, y: 10 }}
@@ -26,11 +37,24 @@ export default function Home({ onSelectBusiness }: HomeProps) {
       className="pb-32"
     >
       {/* Header */}
-      <div className="px-6 pt-12 pb-6 max-w-7xl mx-auto">
-        <p className="text-zinc-500 font-semibold text-sm mb-1 tracking-wide uppercase">Location</p>
-        <h1 className="text-3xl font-bold text-zinc-900 tracking-tight">
-          Gebze, Kocaeli
-        </h1>
+      <div className="px-6 pt-12 pb-6 max-w-7xl mx-auto flex items-center justify-between">
+        <button 
+          onClick={() => setShowCategories(true)}
+          className="w-10 h-10 bg-white rounded-xl shadow-sm border border-zinc-100 flex items-center justify-center text-zinc-900 active:scale-95 transition-transform"
+        >
+          <LayoutGrid size={20} />
+        </button>
+
+        <div className="flex items-center gap-2">
+          <Navigation size={18} className="text-zinc-900" />
+          <h1 className="text-xl font-bold text-zinc-900 tracking-tight">
+            Gebze, Kocaeli
+          </h1>
+        </div>
+
+        <button className="w-10 h-10 rounded-full border border-zinc-200 flex items-center justify-center text-zinc-900 active:scale-95 transition-transform">
+          <Bell size={20} />
+        </button>
       </div>
 
       {/* Search Bar */}
@@ -39,7 +63,7 @@ export default function Home({ onSelectBusiness }: HomeProps) {
           <Search size={20} className="text-zinc-400" />
           <input 
             type="text" 
-            placeholder="Search cafes, services..." 
+            placeholder="Kafe, hizmet ara..." 
             className="flex-1 bg-transparent outline-none text-zinc-900 placeholder:text-zinc-400 font-medium"
           />
         </div>
@@ -65,8 +89,8 @@ export default function Home({ onSelectBusiness }: HomeProps) {
       {/* Popular Section */}
       <div className="px-6 max-w-7xl mx-auto">
         <div className="flex justify-between items-end mb-6">
-          <h2 className="text-xl font-bold text-zinc-900 tracking-tight">Popular in Gebze</h2>
-          <button className="text-sm font-bold text-zinc-400 hover:text-zinc-900 transition-colors">See all</button>
+          <h2 className="text-xl font-bold text-zinc-900 tracking-tight">Gebze'de Popüler</h2>
+          <button className="text-sm font-bold text-zinc-400 hover:text-zinc-900 transition-colors">Tümünü gör</button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {popularBusinesses.map((business) => (
@@ -78,6 +102,42 @@ export default function Home({ onSelectBusiness }: HomeProps) {
           ))}
         </div>
       </div>
+
+      {/* Categories Modal */}
+      <AnimatePresence>
+        {showCategories && (
+          <motion.div 
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 100 }}
+            className="fixed inset-0 z-[60] bg-white p-6 overflow-y-auto"
+          >
+            <div className="flex justify-between items-center mb-8 pt-6 max-w-7xl mx-auto">
+              <h2 className="text-2xl font-bold text-zinc-900">Kategoriler</h2>
+              <button 
+                onClick={() => setShowCategories(false)}
+                className="w-10 h-10 bg-zinc-100 rounded-full flex items-center justify-center text-zinc-900 active:scale-95 transition-transform"
+              >
+                <X size={20} />
+              </button>
+            </div>
+            
+            <div className="grid grid-cols-3 gap-6 max-w-7xl mx-auto">
+              {allCategories.map((cat) => {
+                const Icon = cat.icon;
+                return (
+                  <div key={cat.id} className="flex flex-col items-center gap-3 cursor-pointer group">
+                    <div className="w-20 h-20 bg-zinc-50 rounded-[24px] flex items-center justify-center text-zinc-900 group-active:scale-95 transition-transform">
+                      <Icon size={28} strokeWidth={1.5} />
+                    </div>
+                    <span className="text-sm font-bold text-zinc-700">{cat.label}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
