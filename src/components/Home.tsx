@@ -76,12 +76,12 @@ export default function Home({ onSelectBusiness }: HomeProps) {
       </div>
 
       {/* Slider */}
-      <div className="px-6 mb-8 max-w-7xl mx-auto">
-        <div className="flex gap-4 overflow-x-auto hide-scrollbar snap-x snap-mandatory">
+      <div className="mb-8 w-full overflow-hidden">
+        <div className="flex gap-4 overflow-x-auto hide-scrollbar snap-x snap-mandatory px-6">
           {[1, 2, 3].map((item) => (
-            <div key={item} className="min-w-[100%] md:min-w-[400px] h-[250px] bg-zinc-200 rounded-[24px] p-6 flex flex-col justify-end snap-center shrink-0">
-              <h1 className="text-2xl font-bold text-zinc-900 mb-1">Kampanya Başlığı {item}</h1>
-              <h3 className="text-sm font-medium text-zinc-600">Kampanya detayı ve açıklaması burada yer alacak. Fırsatı kaçırmayın.</h3>
+            <div key={item} className="w-[85vw] md:w-[400px] h-[180px] bg-zinc-100 rounded-[24px] p-6 flex flex-col justify-end snap-center shrink-0">
+              <h1 className="text-xl font-bold text-zinc-900 mb-1">Özel Fırsat {item}</h1>
+              <h3 className="text-sm font-medium text-zinc-500 line-clamp-2">Gebzem kullanıcılarına özel avantajları keşfedin.</h3>
             </div>
           ))}
         </div>
