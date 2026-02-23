@@ -1,4 +1,4 @@
-import { Search, Coffee, ShoppingBag, Wrench, Car, LayoutGrid, Navigation, Bell, X, Utensils, Calendar, FileText, Home as HomeIcon, Briefcase } from 'lucide-react';
+import { Search, Coffee, ShoppingBag, Wrench, Car, LayoutGrid, Navigation, Bell, X, Utensils, Calendar, FileText, Home as HomeIcon, Briefcase, Cross, CreditCard, ParkingCircle, Hospital, Gift } from 'lucide-react';
 import { popularBusinesses } from '../data';
 import ListingCard from './ListingCard';
 import { Business } from '../types';
@@ -11,13 +11,11 @@ interface HomeProps {
 }
 
 const categories = [
-  { id: 'food', icon: Coffee, label: 'Yeme' },
-  { id: 'shopping', icon: ShoppingBag, label: 'Alışveriş' },
-  { id: 'services', icon: Wrench, label: 'Hizmetler' },
-  { id: 'taxi', icon: Car, label: 'Taksi' },
-  { id: 'ilan', icon: FileText, label: 'İlan' },
-  { id: 'emlak', icon: HomeIcon, label: 'Emlak' },
-  { id: 'is', icon: Briefcase, label: 'İş' },
+  { id: 'eczane', icon: Cross, label: 'Eczane' },
+  { id: 'atm', icon: CreditCard, label: 'ATM' },
+  { id: 'taksi', icon: Car, label: 'Taksi' },
+  { id: 'otopark', icon: ParkingCircle, label: 'Otopark' },
+  { id: 'hastane', icon: Hospital, label: 'Hastane' },
 ];
 
 const allCategories = [
@@ -101,6 +99,30 @@ export default function Home({ onSelectBusiness }: HomeProps) {
               </div>
             );
           })}
+        </div>
+      </div>
+
+      {/* İndirimler & Yeni İşletmeler */}
+      <div className="px-6 mb-10 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-white rounded-[24px] p-5 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col gap-3 cursor-pointer active:scale-95 transition-transform">
+            <div className="w-10 h-10 bg-red-50 text-red-500 rounded-full flex items-center justify-center">
+              <Gift size={20} />
+            </div>
+            <div>
+              <h3 className="font-bold text-zinc-900 text-sm">İndirimler</h3>
+              <p className="text-xs font-medium text-zinc-500">Özel fırsatlar</p>
+            </div>
+          </div>
+          <div className="bg-white rounded-[24px] p-5 shadow-[0_4px_20px_rgba(0,0,0,0.04)] flex flex-col gap-3 cursor-pointer active:scale-95 transition-transform">
+            <div className="w-10 h-10 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center">
+              <Briefcase size={20} />
+            </div>
+            <div>
+              <h3 className="font-bold text-zinc-900 text-sm">Yeni İşletmeler</h3>
+              <p className="text-xs font-medium text-zinc-500">Yeni açılanlar</p>
+            </div>
+          </div>
         </div>
       </div>
 
