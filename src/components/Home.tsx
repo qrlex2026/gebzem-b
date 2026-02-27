@@ -52,7 +52,7 @@ export default function Home({ onSelectBusiness }: HomeProps) {
       className="pb-32"
     >
       {/* Header */}
-      <div className="px-6 pt-6 pb-6 max-w-7xl mx-auto flex items-center justify-between">
+      <div className="px-6 pt-12 pb-6 max-w-7xl mx-auto flex items-center justify-between">
         <button 
           onClick={() => setShowCategories(true)}
           className="w-10 h-10 bg-white rounded-xl shadow-sm border border-zinc-100 flex items-center justify-center text-zinc-900 active:scale-95 transition-transform shrink-0"
@@ -70,6 +70,18 @@ export default function Home({ onSelectBusiness }: HomeProps) {
         <button className="w-10 h-10 rounded-full border border-zinc-200 flex items-center justify-center text-zinc-900 active:scale-95 transition-transform shrink-0">
           <Bell size={20} />
         </button>
+      </div>
+
+      {/* Search Bar */}
+      <div className="px-6 mb-8 max-w-7xl mx-auto">
+        <div className="flex items-center gap-3 bg-white px-5 py-4 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.06)]">
+          <Search size={20} className="text-zinc-400" />
+          <input 
+            type="text" 
+            placeholder="Kafe, hizmet ara..." 
+            className="flex-1 bg-transparent outline-none text-zinc-900 placeholder:text-zinc-400 font-medium"
+          />
+        </div>
       </div>
 
       {/* Slider */}
@@ -119,31 +131,20 @@ export default function Home({ onSelectBusiness }: HomeProps) {
         </div>
       </div>
 
-      {/* Tarihi Yerler Section */}
-      <div className="px-6 mb-10 max-w-7xl mx-auto">
-        <div className="w-full h-[250px] relative overflow-hidden rounded-[32px] border-[3px] border-zinc-100 bg-gradient-to-t from-black/5 to-transparent flex flex-col justify-center">
-          {/* Geometric Circles */}
-          <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full border border-zinc-200/50" />
-          <div className="absolute top-20 -left-10 w-32 h-32 rounded-full border border-zinc-200/30" />
-          <div className="absolute -bottom-10 right-20 w-24 h-24 rounded-full border border-zinc-200/40" />
-          
-          <div className="relative z-10">
-            <h2 className="px-6 mb-4 text-lg font-bold text-zinc-800">Tarihi Yerler</h2>
-            <div className="flex gap-4 overflow-x-auto px-6 hide-scrollbar">
-              {[
-                'Eskihisar Kalesi',
-                'Osman Hamdi Bey Müzesi',
-                'Çoban Mustafa Paşa Külliyesi',
-                'Hannibal Mezarı',
-                'Hünkar Çayırı'
-              ].map((place, idx) => (
-                <div key={idx} className="flex flex-col gap-2 min-w-[140px]">
-                  <div className="w-full aspect-square bg-zinc-200/60 rounded-2xl shadow-sm" />
-                  <span className="text-[11px] font-bold text-zinc-600 leading-tight">{place}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+      {/* Popular Section */}
+      <div className="px-6 max-w-7xl mx-auto">
+        <div className="flex justify-between items-end mb-6">
+          <h2 className="text-xl font-bold text-zinc-900 tracking-tight">Gebze'de Popüler</h2>
+          <button className="text-sm font-bold text-zinc-400 hover:text-zinc-900 transition-colors">Tümünü gör</button>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {popularBusinesses.map((business) => (
+            <ListingCard 
+              key={business.id} 
+              business={business} 
+              onClick={() => onSelectBusiness(business)} 
+            />
+          ))}
         </div>
       </div>
 

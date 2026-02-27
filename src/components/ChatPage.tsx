@@ -80,7 +80,7 @@ export default function ChatPage({ onBack }: ChatPageProps) {
       </svg>
 
       {/* Header */}
-      <header className="relative z-10 px-6 pt-6 flex items-center justify-between">
+      <header className="relative z-10 px-6 pt-12 flex items-center justify-between">
         <button 
           onClick={onBack}
           className="w-10 h-10 flex items-center justify-center text-zinc-900 active:scale-95 transition-transform"
