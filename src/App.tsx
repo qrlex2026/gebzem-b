@@ -27,7 +27,7 @@ export default function App() {
         ) : activeTab === 'profile' ? (
           <ProfilePage key="profile" />
         ) : activeTab === 'chat' ? (
-          <ChatPage key="chat" />
+          <ChatPage key="chat" onBack={() => setActiveTab('home')} />
         ) : activeTab === 'explore' || activeTab === 'campaign' ? (
           <div key={activeTab} className="pt-32 text-center text-zinc-500 font-medium">Yapım Aşamasında</div>
         ) : (
@@ -47,7 +47,7 @@ export default function App() {
         </button>
       )}
       
-      {!selectedBusiness && (
+      {!selectedBusiness && activeTab !== 'chat' && (
         <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
       )}
     </div>

@@ -52,7 +52,7 @@ export default function Home({ onSelectBusiness }: HomeProps) {
       className="pb-32"
     >
       {/* Header */}
-      <div className="px-6 pt-12 pb-6 max-w-7xl mx-auto flex items-center justify-between">
+      <div className="px-6 pt-6 pb-6 max-w-7xl mx-auto flex items-center justify-between">
         <button 
           onClick={() => setShowCategories(true)}
           className="w-10 h-10 bg-white rounded-xl shadow-sm border border-zinc-100 flex items-center justify-center text-zinc-900 active:scale-95 transition-transform shrink-0"
@@ -128,23 +128,6 @@ export default function Home({ onSelectBusiness }: HomeProps) {
             </div>
             <span className="text-xs font-bold text-zinc-600">Yeni İşletmeler</span>
           </div>
-        </div>
-      </div>
-
-      {/* Popular Section */}
-      <div className="px-6 max-w-7xl mx-auto">
-        <div className="flex justify-between items-end mb-6">
-          <h2 className="text-xl font-bold text-zinc-900 tracking-tight">Gebze'de Popüler</h2>
-          <button className="text-sm font-bold text-zinc-400 hover:text-zinc-900 transition-colors">Tümünü gör</button>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {popularBusinesses.map((business) => (
-            <ListingCard 
-              key={business.id} 
-              business={business} 
-              onClick={() => onSelectBusiness(business)} 
-            />
-          ))}
         </div>
       </div>
 
